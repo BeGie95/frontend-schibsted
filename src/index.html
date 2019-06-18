@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title><%= htmlWebpackPlugin.options.title %></title>
+</head>
+
+<body>
+  <div class="app-sort">
+    <span class="app-sort__title">Sort by date</span>
+    <div class="app-sort__button-wrapper">
+      <button class="app-sort__button" id="app-sort-asc">⯅</button>
+      <button class="app-sort__button" id="app-sort-desc">⯆</button>
+    </div>
+  </div>
+  <aside class="app-aside">
+    <span class="app-aside__title">Data sources</span>
+    <div class="app-aside__checkbox">
+      <input type="checkbox" name="fasion" id="fashion" checked />
+      <label for="fashion">Fashion</label>
+    </div>
+    <div class="app-aside__checkbox">
+      <input type="checkbox" name="sport" id="sport" />
+      <label for="sport">Sports</label>
+    </div>
+  </aside>
+  <main class="app-main"></main>
+</body>
+
+</html>

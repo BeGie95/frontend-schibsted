@@ -1,9 +1,15 @@
-function helloWorld() {
-    let element = document.createElement('div');
+import { Model } from './model';
+import { View } from './view';
+import { Controller } from './controller';
 
-    element.innerHTML = 'Hello world';
+import './style.css';
 
-    return element;
+function App() {
+  const model = Model();
+  const view = View();
+  Controller({ model, view }).handleOnLoad();
 }
 
-document.body.appendChild(helloWorld());
+window.addEventListener('DOMContentLoaded', () => {
+  App();
+});
