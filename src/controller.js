@@ -5,9 +5,10 @@ export function Controller({ model, view }) {
     fashion: true,
     sport: false,
   };
+  let sort = null;
 
   const renderView = () => {
-    view.render(model.getData({ filters }));
+    view.render(model.getData({ filters, sort }));
   };
 
   async function loadData(section) {
@@ -39,7 +40,13 @@ export function Controller({ model, view }) {
     }
   };
 
+  const sortButtons = ({ sort: sortParam }) => {
+    sort = sortParam;
+    renderView();
+  };
+
   view.bindToggleCheckboxes(toggleCheckboxes);
+  view.bindSortButtons(sortButtons);
 
   return Object.freeze({
     handleOnLoad,

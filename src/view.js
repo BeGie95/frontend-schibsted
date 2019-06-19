@@ -4,6 +4,8 @@ export function View() {
   const articles = $('.app-main');
   const fashionCheckbox = $('#fashion');
   const sportCheckbox = $('#sport');
+  const descButton = $('#app-sort-desc');
+  const ascButton = $('#app-sort-asc');
 
   const bindToggleCheckboxes = handler => {
     fashionCheckbox.addEventListener('change', ({ target }) => {
@@ -15,6 +17,19 @@ export function View() {
     });
     sportCheckbox.addEventListener('change', ({ target }) => {
       handler({ name: 'sport', checked: target.checked, endpoint: 'sports' });
+    });
+  };
+
+  const bindSortButtons = handler => {
+    descButton.addEventListener('click', () => {
+      handler({
+        sort: 'descending',
+      });
+    });
+    ascButton.addEventListener('click', () => {
+      handler({
+        sort: 'ascending',
+      });
     });
   };
 
@@ -56,5 +71,6 @@ export function View() {
   return Object.freeze({
     render,
     bindToggleCheckboxes,
+    bindSortButtons,
   });
 }

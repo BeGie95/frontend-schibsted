@@ -28,10 +28,21 @@ export function Model() {
     data = { ...data, error };
   };
 
-  const getData = ({ filters }) => {
+  const getData = ({ filters, sort }) => {
     return {
       error: data.error,
-      articles: data.articles.filter(article => filters[article.category]),
+      // sort mutates orignal reference but here is ok because new reference is created after filtering
+      articles: data.articles
+        .filter(article => filters[article.category])
+        .sort((a, b) => {
+          if (sort === 'descending') {
+            return b.dateUnix - a.dateUnix;
+          }
+          if (sort === 'ascending') {
+            return a.dateUnix - b.dateUnix;
+          }
+          return 0;
+        }),
     };
   };
 
