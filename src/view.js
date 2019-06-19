@@ -7,7 +7,7 @@ export function View() {
   const descButton = $('#app-sort-desc');
   const ascButton = $('#app-sort-asc');
 
-  const bindToggleCheckboxes = handler => {
+  const bindCheckboxes = handler => {
     fashionCheckbox.addEventListener('change', ({ target }) => {
       handler({
         name: 'fashion',
@@ -20,7 +20,7 @@ export function View() {
     });
   };
 
-  const bindSortButtons = handler => {
+  const bindButtons = handler => {
     descButton.addEventListener('click', () => {
       handler({
         sort: 'descending',
@@ -37,7 +37,7 @@ export function View() {
     articles.innerHTML = `
       ${
         model.error
-          ? `<h1>${model.error}</h1>`
+          ? `<h1>Upsss, we have problem, please reload the page</h1><button onclick="window.location.reload()">Reload</button>`
           : `
         ${model.articles
           .map(({ image, title, preamble, date }) => {
@@ -48,29 +48,29 @@ export function View() {
               formatedDate = dateArr.join(' ');
             }
             return `<article>
-          <figure class="app-figure">
-            ${
-              image
-                ? `<img  class="app-figure__image" src="${image}" alt="${title ||
-                    ''}" />`
-                : ''
-            }
-            <figcaption class="app-figure__figcaption">
-              <h2 class="app-figure__title">${title || ''}</h2>
-              <span class="app-figure__date">${formatedDate}</span>
-              <p class="app-figure__preamble">${preamble || ''}</p>
-            </figcaption>
-          </figure>
-        </article>`;
+              <figure class="app-figure">
+                ${
+                  image
+                    ? `<img  class="app-figure__image" src="${image}" alt="${title ||
+                        ''}" />`
+                    : ''
+                }
+                <figcaption class="app-figure__figcaption">
+                  <h2 class="app-figure__title">${title || ''}</h2>
+                  <span class="app-figure__date">${formatedDate}</span>
+                  <p class="app-figure__preamble">${preamble || ''}</p>
+                </figcaption>
+              </figure>
+            </article>`;
           })
           .join('')}
       </ul>`
       }
-    `;
+`;
   };
   return Object.freeze({
     render,
-    bindToggleCheckboxes,
-    bindSortButtons,
+    bindCheckboxes,
+    bindButtons,
   });
 }

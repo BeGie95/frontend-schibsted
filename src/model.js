@@ -27,7 +27,6 @@ export function Model() {
   const setError = ({ error }) => {
     data = { ...data, error };
   };
-
   const getData = ({ filters, sort }) => {
     return {
       error: data.error,
@@ -45,7 +44,6 @@ export function Model() {
         }),
     };
   };
-
   return Object.freeze({
     getData,
     setArticles,

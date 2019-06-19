@@ -31,7 +31,7 @@ export function Controller({ model, view }) {
     loadData('fashion');
   };
 
-  const toggleCheckboxes = ({ name, checked, endpoint }) => {
+  const handleCheckboxChange = ({ name, checked, endpoint }) => {
     filters[name] = !filters[name];
     if (checked) {
       loadData(endpoint);
@@ -40,15 +40,16 @@ export function Controller({ model, view }) {
     }
   };
 
-  const sortButtons = ({ sort: sortParam }) => {
+  const handleButtonClick = ({ sort: sortParam }) => {
     sort = sortParam;
     renderView();
   };
 
-  view.bindToggleCheckboxes(toggleCheckboxes);
-  view.bindSortButtons(sortButtons);
+  view.bindCheckboxes(handleCheckboxChange);
+  view.bindButtons(handleButtonClick);
 
   return Object.freeze({
     handleOnLoad,
+    loadData,
   });
 }
