@@ -13,9 +13,9 @@ HTML: In html file I added template with controls to filter/sort articles and en
 CSS: I added simply css file with rwd layout styles done via CSS GRID
 
 JS: To not overcomplicate things and keep bundle size small I built small mvc with only javascript, not with react etc.
-I preferred function compositions without classes and this/new fatigue.
+I preferred function/object composition without classes and this/new fatigue.
 My modules are factory functions with private members and frozen return value to add a bit immutability.
-Code is relative easy to test: I use async/await syntax, array fp methods like map/filter/reduce.
+Code is relative easy to test: I used async/await syntax, array fp methods like map/filter/reduce etc.
 
 # AUDITS
 
@@ -23,7 +23,7 @@ in /audits folder
 
 I did two simple audits about bundle sizes and website performance/seo/accessibility via WEBPACK-BUNDLE-ANALYZER and LIGHTHOUSE CI
 
-Code bundle is very small and lighthouse audits pretty high - adding favicon and http/2 increase best practises
+Code bundle is very small and lighthouse audits pretty high - adding favicon and http/2 will increase best practises
 
 ![](./audits/report.png)
 
@@ -37,3 +37,6 @@ Code bundle is very small and lighthouse audits pretty high - adding favicon and
 4. Add service workers and cache some resources, make this app PWA
 5. Use HTTP/2 for all of its resources
 6. Write more tests, including some e2e like cypress
+7. Move styles from js loader to simple link tag - avoid fouc
+
+# THANK YOU FOR REVIEW AND FEEDBACK :)
