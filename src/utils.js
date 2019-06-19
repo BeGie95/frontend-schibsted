@@ -17,3 +17,6 @@ export const uniqBy = (arr, predicate) => {
 
 export const capitalizeFirstLetter = string =>
   string.charAt(0).toUpperCase() + string.slice(1);
+
+export const $ = selector => document.querySelector(selector);
+export const $$ = selector => document.querySelectorAll(selector);

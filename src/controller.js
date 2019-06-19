@@ -30,6 +30,17 @@ export function Controller({ model, view }) {
     loadData('fashion');
   };
 
+  const toggleCheckboxes = ({ name, checked, endpoint }) => {
+    filters[name] = !filters[name];
+    if (checked) {
+      loadData(endpoint);
+    } else {
+      renderView();
+    }
+  };
+
+  view.bindToggleCheckboxes(toggleCheckboxes);
+
   return Object.freeze({
     handleOnLoad,
   });

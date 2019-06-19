@@ -1,7 +1,23 @@
-import { capitalizeFirstLetter } from './utils';
+import { capitalizeFirstLetter, $ } from './utils';
 
 export function View() {
-  const articles = document.querySelector('.app-main');
+  const articles = $('.app-main');
+  const fashionCheckbox = $('#fashion');
+  const sportCheckbox = $('#sport');
+
+  const bindToggleCheckboxes = handler => {
+    fashionCheckbox.addEventListener('change', ({ target }) => {
+      handler({
+        name: 'fashion',
+        checked: target.checked,
+        endpoint: 'fashion',
+      });
+    });
+    sportCheckbox.addEventListener('change', ({ target }) => {
+      handler({ name: 'sport', checked: target.checked, endpoint: 'sports' });
+    });
+  };
+
   const render = model => {
     articles.innerHTML = `
       ${
@@ -39,5 +55,6 @@ export function View() {
   };
   return Object.freeze({
     render,
+    bindToggleCheckboxes,
   });
 }
