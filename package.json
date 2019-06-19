@@ -9,11 +9,19 @@
     "lint": "eslint --fix \"./src/**/*.js\"",
     "prettify": "prettier --write",
     "coverage": "npm test -- --coverage",
-    "test": "jest"
+    "test": "jest",
+    "test:watch": "jest --watch"
+  },
+  "jest": {
+    "automock": false,
+    "setupFiles": [
+      "./setupJest.js"
+    ]
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged"
+      "pre-commit": "lint-staged",
+      "pre-push": "cross-env CI=true npm test"
     }
   },
   "lint-staged": {
@@ -34,6 +42,7 @@
     "@babel/preset-env": "^7.4.5",
     "babel-eslint": "^10.0.2",
     "babel-jest": "^24.8.0",
+    "cross-env": "^5.2.0",
     "css-loader": "^3.0.0",
     "eslint": "^5.16.0",
     "eslint-config-airbnb": "^17.1.0",
@@ -45,6 +54,7 @@
     "html-webpack-plugin": "^3.2.0",
     "husky": "^2.4.1",
     "jest": "^24.8.0",
+    "jest-fetch-mock": "^2.1.2",
     "lint-staged": "^8.2.1",
     "prettier": "^1.18.2",
     "style-loader": "^0.23.1",
